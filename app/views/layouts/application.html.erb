@@ -9,20 +9,22 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-
+<body>
 <header>
   <%= render "layouts/header" %>
 </header>
-<main>
 
+<main>
   <div class="container">
     <%= render "layouts/flash" %>
-    <body>
+
     <%= yield %>
-    </body>
+
   </div>
-</main>
+</main>ł
+
 <footer>
   <%= render "layouts/footer" %>
 </footer>
+</body>
 </html>
