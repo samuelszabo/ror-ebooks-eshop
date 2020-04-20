@@ -5,6 +5,24 @@
       <li><a href="sass.html">Sass</a></li>
       <li><a href="badges.html">Components</a></li>
       <li><a href="collapsible.html">JavaScript</a></li>
+      <% if user_signed_in? %>
+        <li>
+          <a class="dropdown-button" data-activates="dropdown1" href="#!">
+                     <span><%= current_user.email %>
+                     </span><i class="material-icons right">arrow_drop_down</i>
+          </a>
+        </li>
+      <% else %>
+        <li><%= link_to (t :sign_in), new_user_session_url %></li>
+      <% end %>
     </ul>
+      <% if user_signed_in? %>
+        <ul class="dropdown-content" id="dropdown1">
+          <li><%= link_to (t :profile), edit_user_registration_url %></li>
+          <li class="divider"></li>
+          <li><%= link_to (t :sign_out), destroy_user_session_url, data: {method: :delete} %></li>
+        </ul>
+      <% end %>
+
   </div>
 </nav>
