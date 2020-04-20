@@ -10,5 +10,11 @@
   <%= @post.content %>
 </p>
 
+
+<p>
+  <strong>User id:</strong>
+  <%= @post.user.id %>
+</p>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
