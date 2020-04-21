@@ -19,7 +19,7 @@ jobs:
         ruby-version: 2.7.1
     - name: Prepare
       run: |
-        apt-get install libsqlite3-dev
+        sudo apt-get install libsqlite3-dev
     - name: Bundle install
       run: |
         gem install bundler
