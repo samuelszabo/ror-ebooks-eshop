@@ -24,7 +24,11 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
-    - name: Migrate
+    - name: DB Create
+      run: |
+        bundle exec rake db:create
+        bundle exec rake db:schema:load
+    - name: DB Migrate
       run: |
         bundle exec rails db:migrate
     - name: Test with Rake
