@@ -17,8 +17,13 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.7.1
-    - name: Build and test with Rake
+    - name: Prepare
+      run: |
+        apt-get install libsqlite3-dev
+    - name: Bundle install
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
+    - name: Test with Rake
+      run: |
         bundle exec rake
