@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-  setup do
+
+  def setup
+    sign_in users(:one)
     @post = posts(:one)
   end
 
