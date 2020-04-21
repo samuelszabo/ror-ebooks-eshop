@@ -20,6 +20,7 @@ jobs:
     - name: Prepare
       run: |
         sudo apt-get install libsqlite3-dev
+        yarn install --check-files
     - name: Bundle install
       run: |
         gem install bundler
