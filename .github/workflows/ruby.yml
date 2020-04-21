@@ -1,4 +1,4 @@
-name: Ruby
+name: Rails Test
 
 on:
   push:
@@ -13,12 +13,32 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby 2.6
+    - name: Set up Ruby 2.7
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: 2.6.x
-    - name: Build and test with Rake
+        ruby-version: 2.7.1
+    - name: Prepare
+      run: |
+        sudo apt-get install libsqlite3-dev
+        yarn install --check-files
+    - uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+    - name: Bundle install
       run: |
         gem install bundler
+        bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
-        bundle exec rake
+    - name: DB Create
+      run: |
+        bundle exec rake db:create
+        bundle exec rake db:schema:load
+    - name: DB Migrate
+      run: |
+        bundle exec rails db:migrate
+    - name: Test with Rake
+      run: |
+        bundle exec rails test
