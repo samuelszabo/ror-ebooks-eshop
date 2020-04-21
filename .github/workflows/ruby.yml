@@ -1,4 +1,4 @@
-name: Ruby
+name: Rails test
 
 on:
   push:
@@ -24,6 +24,9 @@ jobs:
       run: |
         gem install bundler
         bundle install --jobs 4 --retry 3
+    - name: Migrate
+        run: |
+          bundle exec rails db:migrate
     - name: Test with Rake
       run: |
-        bundle exec rake
+        bundle exec rails test
