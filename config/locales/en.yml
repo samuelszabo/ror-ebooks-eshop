@@ -31,3 +31,5 @@
 
 en:
   hello: "Hello world"
+  Products: "Products"
+  sign_in: "sign in"
