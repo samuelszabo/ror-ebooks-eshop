@@ -3,11 +3,11 @@ require 'test_helper'
 class PostsControllerTest < ActionDispatch::IntegrationTest
 
   def setup
-    sign_in users(:one)
+    sign_in users(:user_one)
     @post = posts(:one)
   end
 
-  test "should get index" do
+  test "should get index admin" do
     get posts_url
     assert_response :success
   end
@@ -25,7 +25,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_url(Post.last)
   end
 
-  test "should show post" do
+  test "should show post admin" do
     get post_url(@post)
     assert_response :success
   end

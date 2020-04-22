@@ -6,7 +6,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     @product = products(:one)
   end
 
-  test "should get index" do
+  test "should get index admin" do
     get products_url
     assert_response :success
   end
@@ -24,7 +24,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to product_url(Product.last)
   end
 
-  test "should show product" do
+  test "should show product admin" do
     get product_url(@product)
     assert_response :success
   end
