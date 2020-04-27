@@ -118,6 +118,8 @@ GEM
       money (~> 6.12)
     money (6.13.7)
       i18n (>= 0.6.4, <= 2)
+    money-collection (0.0.2)
+      money (~> 6.3)
     money-rails (1.13.3)
       activesupport (>= 3.0)
       monetize (~> 1.9.0)
@@ -241,6 +243,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   materialize-sass
+  money-collection
   money-rails (~> 1.12)
   pg
   puma (~> 4.1)
@@ -251,7 +254,6 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sqlite3
   turbolinks (~> 5)
-  tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
