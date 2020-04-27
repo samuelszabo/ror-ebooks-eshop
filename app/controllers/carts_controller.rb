@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :set_product
+  before_action :set_product, only: [:create]
 
   def create
 
@@ -16,6 +16,9 @@ class CartsController < ApplicationController
     #    format.json { render json: @post.errors, status: :unprocessable_entity }
     #  end
     #end
+  end
+
+  def index
   end
 
   private
