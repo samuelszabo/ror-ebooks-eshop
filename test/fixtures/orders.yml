@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  address: one
+  paid: 2020-04-27 20:50:34
+  state: 
+
+two:
+  user: two
+  address: two
+  paid: 2020-04-27 20:50:34
+  state: 
