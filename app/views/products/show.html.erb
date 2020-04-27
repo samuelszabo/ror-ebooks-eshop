@@ -5,5 +5,13 @@
   <%= @product.name %>
 </p>
 
+<p>
+  <strong>Price:</strong>
+  <%= eur @product.price %>
+</p>
+
+<td><%= button_to "Add to Cart", add_to_cart_path, :params => {product_id: @product.id}, :method => :post %></td>
+
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   get 'page/help'
 
   resources :posts
+
+  resources :carts
+  post '/carts' => 'cart#create', :as => 'add_to_cart'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
