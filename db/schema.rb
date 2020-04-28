@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2020_04_27_185124) do
   create_table "order_items", force: :cascade do |t|
     t.integer "order_id", null: false
     t.integer "product_id", null: false
-    t.integer "price_cents_cents", default: 0, null: false
-    t.string "price_cents_currency", default: "EUR", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "EUR", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_items_on_order_id"

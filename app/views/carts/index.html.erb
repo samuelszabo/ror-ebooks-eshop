@@ -14,7 +14,7 @@
   <tbody>
   <% @cart.items.each do |item| %>
     <tr>
-      <td><%= item.product_id %></td>
+      <td><%= item.product.name %></td>
       <td><%= eur item.price %></td>
 <!--      <td><%#= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
     </tr>
