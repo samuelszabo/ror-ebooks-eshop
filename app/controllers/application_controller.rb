@@ -22,4 +22,13 @@ class ApplicationController < ActionController::Base
   def cart_save
     session['shopping_cart'] = @cart.items.map(&:product_id)
   end
+
+  def pr var
+    puts "\n\e[33m#{var.inspect}\e[0m\n\n"
+  end
+
+  def dd var
+    pr var
+    exit
+  end
 end
