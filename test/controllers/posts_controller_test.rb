@@ -1,50 +1,49 @@
 require 'test_helper'
 
-class PostsControllerTest < ActionDispatch::IntegrationTest
+class PostsControllerUnAuthTest < ActionDispatch::IntegrationTest
 
   def setup
-    sign_in users(:user_one)
+    sign_in users(:two)
     @post = posts(:one)
   end
 
-  test "should get index admin" do
+  test "should get index" do
     get posts_url
     assert_response :success
   end
 
-  test "should get new" do
-    get new_post_url
-    assert_response :success
-  end
-
-  test "should create post" do
-    assert_difference('Post.count') do
-      post posts_url, params: { post: { content: @post.content, title: @post.title } }
+  test "raise get new" do
+    assert_raise Exception do
+      get new_post_url
     end
-
-    assert_redirected_to post_url(Post.last)
   end
 
-  test "should show post admin" do
+  test "raise create post" do
+    assert_raise Exception do
+      post posts_url, params: {post: {content: @post.content, title: @post.title}}
+    end
+  end
+
+  test "should show post" do
     get post_url(@post)
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_post_url(@post)
-    assert_response :success
+  test "raise get edit" do
+    assert_raise Exception do
+      get edit_post_url(@post)
+    end
   end
 
-  test "should update post" do
-    patch post_url(@post), params: { post: { content: @post.content, title: @post.title } }
-    assert_redirected_to post_url(@post)
+  test "raise update post" do
+    assert_raise Exception do
+      patch post_url(@post), params: {post: {content: @post.content, title: @post.title}}
+    end
   end
 
-  test "should destroy post" do
-    assert_difference('Post.count', -1) do
+  test "raise destroy post" do
+    assert_raise Exception do
       delete post_url(@post)
     end
-
-    assert_redirected_to posts_url
   end
 end

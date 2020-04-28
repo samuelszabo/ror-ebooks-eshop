@@ -3,9 +3,9 @@
 one:
   order: one
   product: one
-  price_cents: 
+  price_cents: 100
 
 two:
   order: two
   product: two
-  price_cents: 
+  price_cents: 100
