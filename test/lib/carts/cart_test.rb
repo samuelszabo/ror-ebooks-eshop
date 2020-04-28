@@ -1,7 +1,7 @@
 require 'test_helper'
 class CartTest
   test "should create cart" do
-    cart = Carts::Cart.new('test')
+    cart = Carts::Cart.new([])
     assert cart
   end
 end
