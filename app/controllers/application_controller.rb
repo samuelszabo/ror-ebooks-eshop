@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_cart
-    cart_items = session['shopping_cart']? session['shopping_cart'].map { |product_id| Carts::CartItem.new Product.find(product_id) } : []
+    cart_items = session['shopping_cart'] ? session['shopping_cart'].map { |product_id| Carts::CartItem.new Product.find(product_id) } : []
     @cart = Carts::Cart.new cart_items
   end
 
@@ -20,6 +20,15 @@ class ApplicationController < ActionController::Base
   end
 
   def cart_save
-    session['shopping_cart'] = @cart.items.map { |item| item.product_id }
+    session['shopping_cart'] = @cart.items.map(&:product_id)
+  end
+
+  def pr var
+    puts "\n\e[33m#{var.inspect}\e[0m\n\n"
+  end
+
+  def dd var
+    pr var
+    exit
   end
 end

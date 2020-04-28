@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @order.user_id %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @order.address_id %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @order.paid %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @order.state %>
+</p>
+
+<table>
+  <thead>
+  <tr>
+    <th>Product</th>
+    <th>Price cents</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @order.order_items.each do |order_item| %>
+    <tr>
+      <td><%= link_to order_item.product.name, order_item.product %></td>
+      <td><%= eur order_item.price %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
