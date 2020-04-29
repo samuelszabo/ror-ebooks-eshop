@@ -10,7 +10,7 @@
   <%= eur @product.price %>
 </p>
 
-<td><%= button_to "Add to Cart", add_to_cart_path, :params => {product_id: @product.id}, :method => :post %></td>
+<p><%= button_to "Add to Cart", add_to_cart_path, :params => {product_id: @product.id}, :method => :post %></p>
 
 
 <%= link_to 'Edit', edit_product_path(@product) %> |

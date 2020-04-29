@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_27_185124) do
+ActiveRecord::Schema.define(version: 2020_04_29_175457) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(version: 2020_04_27_185124) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "variable_symbol"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "EUR", null: false
+    t.integer "state", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_payments_on_order_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -82,5 +93,6 @@ ActiveRecord::Schema.define(version: 2020_04_27_185124) do
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "addresses"
   add_foreign_key "orders", "users"
+  add_foreign_key "payments", "orders"
   add_foreign_key "posts", "users"
 end
