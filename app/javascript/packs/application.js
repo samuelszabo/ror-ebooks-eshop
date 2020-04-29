@@ -7,14 +7,13 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("jquery")
 
 import 'materialize-css/dist/js/materialize'
 import 'materialize-css/extras/noUiSlider/nouislider'
 
-// require("jquery")
-
 $(document).ready(function() {
-    $('select').material_select();
+    $('select').formSelect();
 });
 
 // Uncomment to copy all static images under ../images to the output folder and reference
