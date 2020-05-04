@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @payment.order_id %>
+</p>
+
+<p>
+  <strong>Variable symbol:</strong>
+  <%= @payment.variable_symbol %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @payment.price %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @payment.state %>
+</p>
+
+<p><%= debug ENV['PAYU_SANDBOX'] %></p>
+<%= link_to 'Back', payments_path %>
