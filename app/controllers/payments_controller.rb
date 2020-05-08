@@ -13,6 +13,7 @@ class PaymentsController < ApplicationController
     pr params
     pr payu_verify_return
       # IF payed, push to queue - onl once
+      # todo
 
   end
 
