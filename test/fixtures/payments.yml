@@ -3,11 +3,9 @@
 one:
   order: one
   variable_symbol: 1
-  price: 
   state: 
 
 two:
   order: two
   variable_symbol: 1
-  price: 
   state: 
