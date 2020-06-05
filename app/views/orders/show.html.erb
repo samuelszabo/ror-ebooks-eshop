@@ -38,5 +38,7 @@
   </tbody>
 </table>
 
+<%= button_to "Continue to payment", create_payment_path, :params => {order_id: @order.id}, :method => :post %>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

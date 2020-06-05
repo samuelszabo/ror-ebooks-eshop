@@ -15,4 +15,9 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :order_items
 
   enum status: {created: 0, processing: 1}
+
+  def price
+    c = Money::Collection.new(order_items.map(&:price))
+    c.sum
+  end
 end
