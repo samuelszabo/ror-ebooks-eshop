@@ -1,24 +1,10 @@
-# README
+# RoR Ebook Eshop playground
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hey, this is my playground creating a demo of e-commerce site where you can:
+- list & manage e-content items for sale (eg ebooks)
+- create order & pay through Payu integration
+- download the ebook directly or send to an email
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Things to sort out:
+* [ ] test of pay controller with payu mock
+* [ ] Dibuk integration for Ruby https://github.com/dibukeu/client-php
