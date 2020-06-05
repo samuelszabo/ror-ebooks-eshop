@@ -15,34 +15,20 @@ class PaymentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create payment" do
-    assert_difference('Payment.count') do
-      post payments_url, params: { payment: { order_id: @payment.order_id, price: @payment.price, state: @payment.state, variable_symbol: @payment.variable_symbol } }
-    end
+  #test "should create payment" do
+  #  assert_difference('Payment.count') do
+  #    post payments_url, params: { payment: { order_id: @payment.order_id, price: @payment.price, state: @payment.state, variable_symbol: @payment.variable_symbol } }
+  #  end
+  #
+  #  assert_redirected_to payment_url(Payment.last)
+  #end
 
-    assert_redirected_to payment_url(Payment.last)
-  end
-
-  test "should show payment" do
-    get payment_url(@payment)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_payment_url(@payment)
-    assert_response :success
-  end
-
-  test "should update payment" do
-    patch payment_url(@payment), params: { payment: { order_id: @payment.order_id, price: @payment.price, state: @payment.state, variable_symbol: @payment.variable_symbol } }
-    assert_redirected_to payment_url(@payment)
-  end
-
-  test "should destroy payment" do
-    assert_difference('Payment.count', -1) do
-      delete payment_url(@payment)
-    end
-
-    assert_redirected_to payments_url
-  end
+  #test "should show payment" do
+  #  get payment_url(@payment)
+  #  assert_response :success
+  #end
+  #test "should update payment" do
+  #  patch payment_url(@payment), params: { payment: { order_id: @payment.order_id, price: @payment.price, state: @payment.state, variable_symbol: @payment.variable_symbol } }
+  #  assert_redirected_to payment_url(@payment)
+  #end
 end
