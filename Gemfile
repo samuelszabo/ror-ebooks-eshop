@@ -24,6 +24,8 @@ gem 'bcrypt', '~> 3.1.7', platforms: :ruby
 # gem 'image_processing', '~> 1.2'
 #
 
+gem "dibuk", path: "../../Martinus/ruby/dibuk"
+
 gem 'materialize-sass'
 gem 'jquery-rails'
 
@@ -33,7 +35,7 @@ gem 'devise'
 # $$$$
 gem 'money-rails', '~>1.12'
 gem 'money-collection'
-gem 'payu_api', '~> 0.1.7'
+# gem 'payu_api', '~> 0.1.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

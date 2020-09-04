@@ -44,6 +44,7 @@ class OrdersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_order
     @order = current_user.orders.find(params[:id])
+    raise "unauthorized" until @order.user.id == current_user.id
   end
 
   # Only allow a list of trusted parameters through.
