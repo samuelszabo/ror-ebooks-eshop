@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: %i[show edit update destroy]
 
   # GET /orders
   # GET /orders.json
@@ -9,8 +11,8 @@ class OrdersController < ApplicationController
 
   ## GET /orders/1
   ## GET /orders/1.json
-  #def show
-  #end
+  # def show
+  # end
 
   # GET /orders/new
   def new
@@ -20,12 +22,10 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-
     @order = current_user.orders.new(order_params)
     @cart.items.each do |item|
       @order.order_items.build(product_id: item.product_id, price: item.price)
     end
-
 
     respond_to do |format|
       if @order.save
@@ -44,6 +44,7 @@ class OrdersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_order
     @order = current_user.orders.find(params[:id])
+    raise 'unauthorized' until @order.user.id == current_user.id
   end
 
   # Only allow a list of trusted parameters through.

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
-  before_action :require_admin!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_product, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new edit create update destroy]
+  before_action :require_admin!, only: %i[new edit create update destroy]
 
   # GET /products
   # GET /products.json
@@ -11,8 +13,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   # GET /products/1.json
-  def show
-  end
+  def show; end
 
   # GET /products/new
   def new
@@ -20,8 +21,7 @@ class ProductsController < ApplicationController
   end
 
   # GET /products/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /products
   # POST /products.json
@@ -64,13 +64,14 @@ class ProductsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def product_params
-      params.require(:product).permit(:name,:price)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def product_params
+    params.require(:product).permit(:name, :price)
+  end
 end

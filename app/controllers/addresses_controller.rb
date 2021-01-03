@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AddressesController < ApplicationController
-  before_action :set_address, only: [:show, :edit, :update, :destroy]
+  before_action :set_address, only: %i[show edit update destroy]
 
   # GET /addresses
   # GET /addresses.json
@@ -9,8 +11,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses/1
   # GET /addresses/1.json
-  def show
-  end
+  def show; end
 
   # GET /addresses/new
   def new
@@ -18,8 +19,7 @@ class AddressesController < ApplicationController
   end
 
   # GET /addresses/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /addresses
   # POST /addresses.json
@@ -54,7 +54,7 @@ class AddressesController < ApplicationController
   # DELETE /addresses/1
   # DELETE /addresses/1.json
   def destroy
-    #todo - check if is used in order
+    # TODO: - check if is used in order
     @address.destroy
     respond_to do |format|
       format.html { redirect_to addresses_url, notice: 'Address was successfully destroyed.' }
@@ -63,13 +63,14 @@ class AddressesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_address
-      @address = Address.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def address_params
-      params.require(:address).permit(:first_name, :surname, :street, :postal_code, :city, :country)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_address
+    @address = Address.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def address_params
+    params.require(:address).permit(:first_name, :surname, :street, :postal_code, :city, :country)
+  end
 end

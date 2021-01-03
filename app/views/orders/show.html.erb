@@ -31,7 +31,7 @@
   <tbody>
   <% @order.order_items.each do |order_item| %>
     <tr>
-      <td><%= link_to order_item.product.name, order_item.product %></td>
+      <td><%= link_to order_item.product.name, order_item %></td>
       <td><%= eur order_item.price %></td>
     </tr>
   <% end %>

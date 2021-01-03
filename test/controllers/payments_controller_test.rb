@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class PaymentsControllerTest < ActionDispatch::IntegrationTest
@@ -5,30 +7,30 @@ class PaymentsControllerTest < ActionDispatch::IntegrationTest
     @payment = payments(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get payments_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_payment_url
     assert_response :success
   end
 
-  #test "should create payment" do
+  # test "should create payment" do
   #  assert_difference('Payment.count') do
   #    post payments_url, params: { payment: { order_id: @payment.order_id, price: @payment.price, state: @payment.state, variable_symbol: @payment.variable_symbol } }
   #  end
   #
   #  assert_redirected_to payment_url(Payment.last)
-  #end
+  # end
 
-  #test "should show payment" do
+  # test "should show payment" do
   #  get payment_url(@payment)
   #  assert_response :success
-  #end
-  #test "should update payment" do
+  # end
+  # test "should update payment" do
   #  patch payment_url(@payment), params: { payment: { order_id: @payment.order_id, price: @payment.price, state: @payment.state, variable_symbol: @payment.variable_symbol } }
   #  assert_redirected_to payment_url(@payment)
-  #end
+  # end
 end

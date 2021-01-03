@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order ID:</strong>
+  <%= @order_item.order_id %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @order_item.product.name %>
+</p>
+
+<ul>
+<% for value in @links do  %>
+  <li><%= link_to(value[0], value[1])%></li>
+<% end %>
+</ul>
+
+
+<%= link_to 'Back', orders_path %>
