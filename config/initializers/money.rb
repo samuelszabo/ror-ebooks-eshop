@@ -1,10 +1,9 @@
-# encoding : utf-8
+# frozen_string_literal: true
 
 MoneyRails.configure do |config|
-
   # To set the default currency
   #
-config.default_currency = :eur
+  config.default_currency = :eur
 
   # Set default bank object
   #
@@ -71,7 +70,7 @@ config.default_currency = :eur
   #
   # set to BigDecimal::ROUND_HALF_EVEN by default
   #
-config.rounding_mode = BigDecimal::ROUND_HALF_UP
+  config.rounding_mode = BigDecimal::ROUND_HALF_UP
 
   # Set default money format globally.
   # Default value is nil meaning "ignore this option".
@@ -85,7 +84,7 @@ config.rounding_mode = BigDecimal::ROUND_HALF_UP
 
   # If you would like to use I18n localization (formatting depends on the
   # locale):
-config.locale_backend = :i18n
+  config.locale_backend = :i18n
   #
   # Example (using default localization from rails-i18n):
   #

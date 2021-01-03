@@ -1,7 +1,7 @@
 PATH
   remote: ../../Martinus/ruby/dibuk
   specs:
-    dibuk (0.1.0)
+    dibuk (0.0.1)
       dry-initializer (~> 0.4)
 
 GEM

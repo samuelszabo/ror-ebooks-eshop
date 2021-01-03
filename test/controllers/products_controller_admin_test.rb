@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ProductsControllerAdminTest < ActionDispatch::IntegrationTest
@@ -6,17 +8,17 @@ class ProductsControllerAdminTest < ActionDispatch::IntegrationTest
     @product = products(:one)
   end
 
-  test "should get index admin" do
+  test 'should get index admin' do
     get products_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_product_url
     assert_response :success
   end
 
-  test "should create product" do
+  test 'should create product' do
     assert_difference('Product.count') do
       post products_url, params: { product: { name: @product.name } }
     end
@@ -24,22 +26,22 @@ class ProductsControllerAdminTest < ActionDispatch::IntegrationTest
     assert_redirected_to product_url(Product.last)
   end
 
-  test "should show product admin" do
+  test 'should show product admin' do
     get product_url(@product)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_product_url(@product)
     assert_response :success
   end
 
-  test "should update product" do
+  test 'should update product' do
     patch product_url(@product), params: { product: { name: @product.name } }
     assert_redirected_to product_url(@product)
   end
 
-  test "should destroy product" do
+  test 'should destroy product' do
     @product = products(:three)
     assert_difference('Product.count', -1) do
       delete product_url(@product)

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class PaymentsController < ApplicationController
-  before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  before_action :set_payment, only: %i[show edit update destroy]
 
   # GET /payments
   # GET /payments.json
@@ -12,9 +14,8 @@ class PaymentsController < ApplicationController
   def show
     pr params
     pr payu_verify_return
-      # IF payed, push to queue - onl once
-      # todo
-
+    # IF payed, push to queue - onl once
+    # todo
   end
 
   # GET /payments/new
@@ -23,8 +24,7 @@ class PaymentsController < ApplicationController
   end
 
   # GET /payments/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /payments
   # POST /payments.json
@@ -82,15 +82,17 @@ class PaymentsController < ApplicationController
   def payu_verify_return
     response = get_client.get_order(order_id: @payment.payu_order_id)
     raise response.error_message unless response.success?
+
     pr response.order[:status]
     response.order[:status] == 'COMPLETED'
   end
 
   def payu_get_token
-    Rails.cache.fetch("payu_token", expires_in: 1.hours) do
-      response = PayuAPI.authorize(pos_id: ENV['PAYU_POS_ID'], key: ENV['PAYU_CLIENT_SECRET'], sandbox: true) #todo sandbox if env
+    Rails.cache.fetch('payu_token', expires_in: 1.hours) do
+      response = PayuAPI.authorize(pos_id: ENV['PAYU_POS_ID'], key: ENV['PAYU_CLIENT_SECRET'], sandbox: true) # TODO: sandbox if env
       pr response
       raise 'payu auth_token retrieving failed' unless response.success?
+
       response.auth_token
     end
   end
@@ -101,27 +103,26 @@ class PaymentsController < ApplicationController
   end
 
   def get_link_url
-
     response = get_client.create_order(
-        continueUrl: url_for(@payment),
-        customerIp: '127.0.0.1',
-        description: 'Order',
-        currencyCode: 'PLN',
-        totalAmount: @payment.price.cents,
-        extOrderId: @payment.variable_symbol,
-        buyer: {
-            email: 'john.doe@example.com',
-            firstName: 'John',
-            lastName: 'Doe',
-            language: 'en'
-        },
-        products: [
-            {
-                name: 'My order',
-                unitPrice: @payment.price.cents,
-                quantity: 1
-            }
-        ]
+      continueUrl: url_for(@payment),
+      customerIp: '127.0.0.1',
+      description: 'Order',
+      currencyCode: 'PLN',
+      totalAmount: @payment.price.cents,
+      extOrderId: @payment.variable_symbol,
+      buyer: {
+        email: 'john.doe@example.com',
+        firstName: 'John',
+        lastName: 'Doe',
+        language: 'en'
+      },
+      products: [
+        {
+          name: 'My order',
+          unitPrice: @payment.price.cents,
+          quantity: 1
+        }
+      ]
     )
 
     raise response.error_message unless response.success?

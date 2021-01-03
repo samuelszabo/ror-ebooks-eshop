@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'carts/cart'
 require 'carts/cart_item'
 
@@ -13,7 +15,7 @@ class ApplicationController < ActionController::Base
     @cart = Carts::Cart.new cart_items
   end
 
-  def cart_add product
+  def cart_add(product)
     cart_item = Carts::CartItem.new product
     @cart.add cart_item
     cart_save
@@ -23,11 +25,11 @@ class ApplicationController < ActionController::Base
     session['shopping_cart'] = @cart.items.map(&:product_id)
   end
 
-  def pr var
+  def pr(var)
     puts "\n\e[33m#{var.inspect}\e[0m\n\n"
   end
 
-  def dd var
+  def dd(var)
     pr var
     exit
   end
