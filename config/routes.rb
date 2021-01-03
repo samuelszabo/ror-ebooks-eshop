@@ -3,7 +3,6 @@
 Rails.application.routes.draw do
   resources :payments
   resources :order_items
-  resources :order_items_download
   resources :orders
   resources :addresses
   resources :prices

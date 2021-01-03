@@ -37,8 +37,6 @@ class OrderItemsController < ApplicationController
       surname: @order_item.order.address.surname
     )
 
-    pr @order_item.price_currency
-
     item = Dibuk::Item.new(
       id: '14345',
       order_id: @order_item.order_id.to_s, # user\`s order id
@@ -49,7 +47,7 @@ class OrderItemsController < ApplicationController
     )
 
     licensed = client.license(user, item)
-    pr licensed.success?
+    # pr licensed.success?
     # pr licensed.error_code
     # pr licensed.body
 
